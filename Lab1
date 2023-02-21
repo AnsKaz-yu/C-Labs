@@ -24,7 +24,6 @@ float Discreminant(coefficients equation) {
 
 bool Exceptions(float D) {
 	if (D < 0) {
-		std::cout << "The discriminant is negative. The equation has no real roots.\n"; //??
 		return true;
 	}
 
