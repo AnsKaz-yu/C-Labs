@@ -6,7 +6,7 @@ struct coefficients {
 	float a, b, c;
 };
 
-coefficients ReadCoefficients(std::string file_name) {
+coefficients ReadCoefficients(const std::string file_name) {
 	std::ifstream cinf(file_name);
 
 	float A, B, C;
@@ -17,20 +17,14 @@ coefficients ReadCoefficients(std::string file_name) {
 	return { A, B, C };
 }
 
-float Discreminant(coefficients equation) {
+float Discreminant(const coefficients equation) {
 	float D = equation.b * equation.b - 4 * equation.a * equation.c;
 	return D;
 }
 
-bool Exceptions(float D) {
-	if (D < 0) {
-		return true;
-	}
 
-	return false;
-}
 
-std::pair<float, float> CountingRoots(coefficients equation, float D) {
+std::pair<float, float> CountingRoots(const coefficients equation, const float D) {
 	std::pair<float, float> roots;
 	roots.first = (-1 * equation.b - sqrt(D)) / (2 * equation.a);
 	roots.second = (-1 * equation.b + sqrt(D)) / (2 * equation.a);
@@ -38,24 +32,24 @@ std::pair<float, float> CountingRoots(coefficients equation, float D) {
 	return roots;
 }
 
-void PrintAnswer(std::string massage, std::string file_name) {
+void PrintAnswer(const std::string massage, const std::string file_name) {
 	std::ofstream coutf(file_name);
 	coutf << massage << '\n';
 	coutf.close();
 }
 
-std::string ToMassage(std::pair<float, float> roots) {
+std::string ToMassage(const std::pair<float, float> roots) {
 	std::string massage;
 	massage = std::to_string(roots.first) + ' ' + std::to_string(roots.second);
 	return massage;
 }
 
-void SolveTheQuadraticEquation(std::string input_name, std::string output_name) {
+void SolveTheQuadraticEquation(const std::string input_name, const std::string output_name) {
 	coefficients C = ReadCoefficients(input_name);
 	float D = Discreminant(C);
 	std::string massage;
 
-	if (Exceptions(D)) {
+	if (D < 0) {
 		massage = "The discriminant is negative. The equation has no real roots.";
 	}
 	else {
