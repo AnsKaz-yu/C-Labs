@@ -1,10 +1,10 @@
 #include <GL/freeglut.h>
 #include <iostream>
-#include "box.hpp"
+#include "box.h"
 
 
-void Box::draw_n_gon(int x, int y) const {
-	int n = type_analysis();
+void box::draw_n_gon(int x, int y, int n) const {
+
 	double pi = 2 * acos(0.0);
 	double rad = (0.9 / screen_size);
 	double X = (double)(x + 0.5) * 2 / screen_size - 1.0;
@@ -17,7 +17,7 @@ void Box::draw_n_gon(int x, int y) const {
 	glEnd();
 }
 
-void Box::set_color() const {
+void box::set_color() const{
 	switch (color) {
 	case COLOR::Blue:
 		glColor3f(0.0f, 0.0f, 1.0f);
@@ -53,7 +53,7 @@ void Box::set_color() const {
 	
 }
 
-void Box::draw(int x, int y, bool frame) const {
+void box::draw(int x, int y, bool frame) {
 	//рисуем прямоугольник
 	double xl, xr;
 	double yu, yd;
@@ -65,18 +65,25 @@ void Box::draw(int x, int y, bool frame) const {
 	yu = 1.0 - (double)y / screen_size * 2;
 	yd = 1.0 - (double)(y + 1) / screen_size * 2;
 	
-	glBegin(GL_QUADS);
+	
 
 	if (frame) {
+		glBegin(GL_QUADS);
 		glColor3f(1.0f, 1.0f, 1.0f);
+		glVertex2f(xl, yu);
+		glVertex2f(xl, yd);
+		glVertex2f(xr, yd);
+		glVertex2f(xr, yu);
+		glEnd();
 	}
-	else {
-		set_color();
-		xl += 0.01;
-		xr -= 0.01;
-		yd += 0.01;
-		yu -= 0.01;
-	}
+	
+	glBegin(GL_QUADS);
+	set_color();
+	xl += 0.01;
+	xr -= 0.01;
+	yd += 0.01;
+	yu -= 0.01;
+	
 	
 
 	glVertex2f(xl, yu);
@@ -85,14 +92,10 @@ void Box::draw(int x, int y, bool frame) const {
 	glVertex2f(xr, yu);
 
 	glEnd();
-
-	//рисуем "метку" в зависимости от типа
-	draw_n_gon(x, y);
 }
 
-int Box::type_analysis() const {
-	if (type == TYPE::bonus) return 3;
-	if (type == TYPE::bomb) return 10;
-	return 0;
+std::set<changing_box> box::activate(int x, int y) {
+	std::set<changing_box> pr;
+	return pr;
 }
 

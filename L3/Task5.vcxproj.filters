@@ -13,19 +13,31 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\elements">
+      <UniqueIdentifier>{0467ecd1-2814-4ac8-a612-acb03fd640e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\elements">
+      <UniqueIdentifier>{91424302-8fce-428b-98a9-b40e8be91ff2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="box.hpp">
+    <ClInclude Include="game.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="game.hpp">
+    <ClInclude Include="bomb.h">
+      <Filter>Файлы заголовков\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="bonus.h">
+      <Filter>Файлы заголовков\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="box.h">
+      <Filter>Файлы заголовков\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="changing_box.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="box.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -33,6 +45,18 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="game_M.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="box.cpp">
+      <Filter>Исходные файлы\elements</Filter>
+    </ClCompile>
+    <ClCompile Include="bomb.cpp">
+      <Filter>Исходные файлы\elements</Filter>
+    </ClCompile>
+    <ClCompile Include="bonus.cpp">
+      <Filter>Исходные файлы\elements</Filter>
+    </ClCompile>
+    <ClCompile Include="changing_box.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
