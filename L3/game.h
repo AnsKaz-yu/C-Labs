@@ -28,8 +28,11 @@ public:
 	}
 
 	~Game() {
-		std::vector<std::vector<box*>> pr;
-		std::swap(pr, playing_field);
+		for (int x = 0; x < screen_size; x++) {
+			for (int y = 0; y < screen_size; y++) {
+				delete playing_field[x][y];
+			}
+		}
 		to_change.clear();
 	};
 
